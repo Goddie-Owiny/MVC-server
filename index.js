@@ -5,7 +5,8 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const session = require("express-session")
 const app = express()
-const router = express.Router()
+
+
 
 // importing the routes from the routes file
 const registerRoute = require("./Routes/registerRoute")
@@ -38,9 +39,6 @@ app.use("/", registerRoute)
 
 app.use("/login", loginRoute)
 
-app.use("/home", (req, res) =>{
-    res.render("home")
-})
 
 
 

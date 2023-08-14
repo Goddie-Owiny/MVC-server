@@ -54,13 +54,12 @@
 /* homepage styles */
 .welcome-text{
   color: #198754;
-  font-family: 'roboto';
+  font-family: "josefin san";
+  text-align: center;
   font-weight: bolder;
-  
 }
 
 .welcome-description{
-  
   font-family: 'raleway';
   text-align: center;
 }

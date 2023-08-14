@@ -1,8 +1,8 @@
 const express = require("express")
 const bcrypt = require("bcrypt")
-const validator = require("validator")
+const passport = require("passport")
 const router = express.Router()
-const userModel = require("../Models/userModels")
+const user = require("../Models/userModels")
 const jwt = require("jsonwebtoken")
 
 const createToken = (_id) =>{
@@ -15,8 +15,14 @@ router.get("/login", (req, res) => {
     res.render("login")
 })
 
+router.post('/login', passport.authenticate('local', { failureRedirect: '/login' }),
+    (req, res) => {
+        req.session.user = req.user
+       console.log(user)
+    });
 
-router.post("/login", async (req, res) => {
+ router.post("/login", async (req, res) => {
+    
     try{
                 const user = await userModel.findOne({email});
         
@@ -32,12 +38,10 @@ router.post("/login", async (req, res) => {
                 console.log("logged in as", user.name)
                 res.redirect("/home")
             }catch(error){
-                console.log(error)
-                console.log(user)
-                res.status(500).json(error)
+               alert(error)
             }
 })
-
+ 
 
 
 

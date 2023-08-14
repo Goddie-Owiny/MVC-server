@@ -48,14 +48,13 @@ router.post("/", async (req, res) => {
         const token = createToken(user._id)
      
         // res.status(200).json({_id: user._id, username, email, token});
-        res.redirect("/home");
+        res.redirect("/login");
     } catch (error) {
         console.log(error)
+        
         res.status(500).json(error)
     }
 })
-router.post('/login', (req, res)=>{
 
-})
 
 module.exports = router;
